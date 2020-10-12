@@ -1,0 +1,24 @@
+﻿@page "/"
+@inject IJSRuntime JSRuntime;
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<igc-radial-gauge id="rg" height="400px" width="400px" value="25" interval="5" minimum-value="0" maximum-value="100">
+    <igc-radial-gauge-range start-value="0" end-value="30" brush="red"></igc-radial-gauge-range>
+    <igc-radial-gauge-range start-value="30" end-value="60" brush="yellow"></igc-radial-gauge-range>
+    <igc-radial-gauge-range start-value="60" end-value="100" brush="green"></igc-radial-gauge-range>
+</igc-radial-gauge>
+
+<button @onclick="OnClick">Update Value</button>
+
+@code {
+
+    async void OnClick()
+    {
+        await JSRuntime.InvokeVoidAsync("updateValue", 60);
+    }
+}
+
+
